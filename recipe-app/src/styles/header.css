@@ -1,0 +1,43 @@
+
+*{
+    margin: 0;
+    padding: 0;
+  }
+
+.header{
+    background-color: #2a5846;
+    height: 90vh;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-around;
+    color: #fff;
+    margin-top: 20px;
+}
+.menu {
+    list-style-type: none;
+    display: flex;
+}
+
+.menu-item{
+    margin: 0px 10px;
+}
+
+.header-section{
+    display: flex;
+    justify-content: space-around;
+}
+
+.header-section-text{
+    width: 35%;
+}
+.header-section-text p{
+    color: #909f99;
+}
+.header-section-text h1{
+    color: #fff;
+}
+.header-section-img{
+    width: 35%;
+}
