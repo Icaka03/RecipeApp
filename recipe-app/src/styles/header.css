@@ -63,16 +63,30 @@
   color: #fff;
   font-size: 17px;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .plateimg {
   width: 100%;
 }
-@media only screen and (max-width: 1300px) {
+.user-icon {
+  width: 30px;
+  height: 30px;
+  filter: invert(100%) brightness(100%);
+  cursor: pointer;
+}
+@media only screen and (max-width: 1500px) {
   .header-section-text h1 {
     font-size: 60px;
   }
   .header-section {
-    margin-top: 50px;
+    margin-top: 0px;
+  }
+  .plateimg {
+    margin-top: 30px;
+  }
+  .user-icon {
+    width: 20px;
+    height: 20px;
   }
 }

@@ -1,0 +1,27 @@
+.popular-section {
+  width: 85%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.popular-heading {
+  font-size: 50px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.see-all {
+  color: #28a672;
+  font-weight: 600;
+  margin-top: 20px;
+  font-size: 22px;
+}
+
+.heading-description {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #868686;
+}
