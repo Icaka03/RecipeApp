@@ -1,5 +1,5 @@
 import "../styles/header.css";
-
+import plateimg from "../images/plateimg.png";
 export default function Header() {
   return (
     <div className="header">
@@ -18,10 +18,12 @@ export default function Header() {
             Discover over 1000+ recipes in your hand with the best recipe. Help
             you to find the easiest way to cook
           </p>
-          <button>Explore Recipes</button>
+          <button className="explore-button">Explore Recipes</button>
         </div>
 
-        <div className="header-section-img"></div>
+        <div className="header-section-img">
+          <img src={plateimg} alt="" className="plateimg" />
+        </div>
       </div>
     </div>
   );
