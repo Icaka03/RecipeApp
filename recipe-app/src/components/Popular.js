@@ -1,6 +1,14 @@
 import "../styles/popular.css";
-
+import React, { useState, useEffect } from "react";
 export default function Popular() {
+  const [meals, setMeals] = useState([]);
+  useEffect(() => {
+    fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+      .then((res) => res.json())
+      .then((json) => setMeals(json.meals))
+      .catch((error) => console.log(error));
+  }, []);
+  console.log(meals);
   return (
     <div className="popular-section">
       <div className="wrapper">
@@ -14,6 +22,9 @@ export default function Popular() {
           <p className="see-all">See all</p>
         </div>
       </div>
+      {meals.map((meal) => {
+        return <div>{meal.strMeal}</div>;
+      })}
     </div>
   );
 }
