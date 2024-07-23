@@ -1,9 +1,12 @@
 import "../styles/popular.css";
 import React, { useState, useEffect } from "react";
+import { signInWithGoogle } from "../firebase-config";
+
 export default function Popular() {
   const [meals, setMeals] = useState([]);
   useEffect(() => {
-    fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+    fetch(`https://www.themealdb.com/api/json/v1/1/random.php
+`)
       .then((res) => res.json())
       .then((json) => setMeals(json.meals))
       .catch((error) => console.log(error));
@@ -23,8 +26,14 @@ export default function Popular() {
         </div>
       </div>
       {meals.map((meal) => {
-        return <div>{meal.strMeal}</div>;
+        return (
+          <div>
+            <p>{meal.strMeal}</p>
+            <p>{meal.strMeal}</p>
+          </div>
+        );
       })}
+      <button onClick={signInWithGoogle}>Sign in with google</button>
     </div>
   );
 }

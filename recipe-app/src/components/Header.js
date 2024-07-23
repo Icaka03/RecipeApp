@@ -1,6 +1,8 @@
 import "../styles/header.css";
 import userIcon from "../images/user.png";
 import plateimg from "../images/plateimg.png";
+import { signInWithGoogle } from "../firebase-config";
+
 export default function Header() {
   return (
     <div className="header">
@@ -11,7 +13,12 @@ export default function Header() {
           <li className="menu-item">Recipes</li>
           <li className="menu-item">Your Recipes</li>
         </ul>
-        <img src={userIcon} alt="" className="user-icon" />
+        <img
+          src={userIcon}
+          alt=""
+          className="user-icon"
+          onClick={signInWithGoogle}
+        />
       </nav>
       <div className="header-section">
         <div className="header-section-text">
