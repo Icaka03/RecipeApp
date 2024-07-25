@@ -28,8 +28,19 @@ export default function Popular() {
             className="random-box"
             style={{ backgroundImage: `url(${meal.strMealThumb})` }}
           >
-            <label>Instruction: </label>
-            <p>{meal.strInstructions}</p>
+            <div className="recipe-info">
+              <div className="recipe-border">
+                <p className="recipe-category">Category: {meal.strCategory}</p>
+                <p className="recipe-heading">{meal.strMeal.toUpperCase()}</p>
+                <div className="recipe-line"></div>
+                <div className="recipe-description">{meal.strInstructions}</div>
+                <div className="recipe-buttons">
+                  <button>Watch It</button>
+                  <button>Instructions</button>
+                  <button>ingredients</button>
+                </div>
+              </div>
+            </div>
           </div>
         ) : null}
       </div>
