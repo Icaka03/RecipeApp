@@ -1,0 +1,11 @@
+.input-box {
+  margin-top: 50px;
+}
+
+.input-recipe {
+  width: 85%;
+  margin: 0 auto;
+  display: block;
+  padding: 20px 0px;
+  border-radius: 10px;
+}

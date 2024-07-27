@@ -129,5 +129,6 @@
   .recipe-description {
     margin-top: 25px;
     font-size: 20px;
+    -webkit-line-clamp: 5;
   }
 }

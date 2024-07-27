@@ -77,13 +77,14 @@
 }
 @media only screen and (max-width: 1500px) {
   .header-section-text h1 {
-    font-size: 60px;
+    font-size: 55px;
   }
   .header-section {
     margin-top: 0px;
   }
   .plateimg {
-    margin-top: 30px;
+    margin-top: 50px;
+    width: 110%;
   }
   .user-icon {
     width: 20px;

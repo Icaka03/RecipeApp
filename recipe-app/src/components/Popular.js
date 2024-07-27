@@ -1,6 +1,5 @@
 import "../styles/popular.css";
 import React, { useState, useEffect } from "react";
-import { signInWithGoogle } from "../firebase-config";
 
 export default function Popular() {
   const [meal, setMeal] = useState(null);
