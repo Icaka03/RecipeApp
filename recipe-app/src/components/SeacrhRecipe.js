@@ -33,6 +33,11 @@ export default function SearchRecipe() {
         onKeyPress={searchMeal}
       />
       <button onClick={handleClick}>Search</button>
+      {meal ? (
+        <div>
+          <p>{meal[0].strMeal}</p>
+        </div>
+      ) : null}
     </div>
   );
 }
