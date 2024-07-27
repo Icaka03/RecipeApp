@@ -1,26 +1,28 @@
 import "../styles/searchRecipe.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 export default function SearchRecipe() {
-  const [meal, setMeal] = useState(null);
   const [search, setSearch] = useState("");
+  const [meal, setMeal] = useState("");
+  const [updated, setUpdated] = useState(search);
   const searchMeal = (evt) => {
-    if (evt.key === "Enter") {
+    if (evt.key === "Enter" || handleClick) {
       fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
-        .then((res) => res.json())
-        .then((json) => setMeal(json.meals[0]))
-        .catch((error) => console.log(error));
+        .then((res) => res.json([0]))
+        .then((json) => setMeal(json.meals));
+      console.log(meal);
+      console.log(search);
     }
   };
-  // useEffect(() => {
-  //   fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
-  //     .then((res) => res.json())
-  //     .then((json) => setMeal(json.meals[0]))
-  //     .catch((error) => console.log(error));
-  // }, []);
-  useEffect(() => {
+
+  const handleClick = () => {
+    setUpdated(search);
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
+      .then((res) => res.json([0]))
+      .then((json) => setMeal(json.meals));
     console.log(meal);
-  }, [meal]);
+    console.log(search);
+  };
   return (
     <div className="input-box">
       <input
@@ -30,8 +32,7 @@ export default function SearchRecipe() {
         value={search}
         onKeyPress={searchMeal}
       />
-      <button>Search</button>
-      {meal.strMealThumb}
+      <button onClick={handleClick}>Search</button>
     </div>
   );
 }
