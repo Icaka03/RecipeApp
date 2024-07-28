@@ -1,0 +1,11 @@
+.recipe-box {
+  background-color: red;
+  height: 33vh;
+  margin-right: 70px;
+}
+
+.width {
+  width: 350px;
+  text-align: center;
+  text-wrap: wrap;
+}

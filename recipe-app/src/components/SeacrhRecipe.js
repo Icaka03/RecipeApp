@@ -1,5 +1,6 @@
 import "../styles/searchRecipe.css";
 import "../styles/popular.css";
+import RecipeBox from "./RecipeBox";
 import React, { useState } from "react";
 
 export default function SearchRecipe() {
@@ -28,34 +29,11 @@ export default function SearchRecipe() {
         onKeyPress={handleClick}
       />
       <button onClick={searchMeal}>Search</button>
-      {meals?.map((meal) => {
-        return (
-          <div className="search-recipe-box">
-            <div
-              className="random-box"
-              style={{ backgroundImage: `url(${meal.strMealThumb})` }}
-            >
-              <div className="recipe-info">
-                <div className="recipe-border">
-                  <p className="recipe-category">
-                    Category: {meal.strCategory}
-                  </p>
-                  <p className="recipe-heading">{meal.strMeal.toUpperCase()}</p>
-                  <div className="recipe-line"></div>
-                  <div className="recipe-description">
-                    {meal.strInstructions}
-                  </div>
-                  <div className="recipe-buttons">
-                    <button>Watch It</button>
-                    <button>Instructions</button>
-                    <button>ingredients</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      })}
+      <div className="recipe-wrapper">
+        {meals?.map((meal) => {
+          return <RecipeBox title={meal.strMeal.toUpperCase()}></RecipeBox>;
+        })}
+      </div>
     </div>
   );
 }

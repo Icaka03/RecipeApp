@@ -42,27 +42,7 @@ export default function Popular() {
             })}
           </div>
         </Popup>
-      ) : // <div className="popup">
-      //   <div className="popup-flex">
-      //     <h1 className="popup-heading">
-      //       Ingredients for<br></br> {meal.strMeal.toUpperCase()}:
-      //     </h1>
-      //     <button
-      //       className="close-popup"
-      //       onClick={() => {
-      //         setIngredientsPopup(false);
-      //       }}
-      //     >
-      //       X
-      //     </button>
-      //   </div>
-      //   <div className="popup-text">
-      //     {getIngridients(meal).map((ingridient) => {
-      //       return <p>{ingridient}</p>;
-      //     })}
-      //   </div>
-      // </div>
-      null}
+      ) : null}
       <div className="wrapper">
         <div>
           <h1 className="popular-heading">Random Recipe Of The Day</h1>
