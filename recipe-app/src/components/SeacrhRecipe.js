@@ -1,20 +1,17 @@
 import "../styles/searchRecipe.css";
+import "../styles/popular.css";
 import React, { useState } from "react";
 
 export default function SearchRecipe() {
   const [search, setSearch] = useState("");
   const [meal, setMeal] = useState("");
-  const searchMeal = (evt) => {
+  const handleClick = (evt) => {
     if (evt.key === "Enter") {
-      fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
-        .then((res) => res.json([0]))
-        .then((json) => setMeal(json.meals));
-      console.log(meal);
-      console.log(search);
+      searchMeal();
     }
   };
 
-  const handleClick = () => {
+  const searchMeal = () => {
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
       .then((res) => res.json([0]))
       .then((json) => setMeal(json.meals));
@@ -28,19 +25,35 @@ export default function SearchRecipe() {
         placeholder="Start Searching For..."
         onChange={(e) => setSearch(e.target.value)}
         value={search}
-        onKeyPress={searchMeal}
+        onKeyPress={handleClick}
       />
-      <button onClick={handleClick}>Search</button>
+      <button onClick={searchMeal}>Search</button>
       {meal ? (
         <div className="search-recipe-box">
           <div
-            className="search-recipe-img"
+            className="random-box"
             style={{ backgroundImage: `url(${meal[0].strMealThumb})` }}
-          ></div>
-          <div className="search-recipe-heading">
-            <p className="search-text-heading">{meal[0].strMeal}</p>
+          >
+            <div className="recipe-info">
+              <div className="recipe-border">
+                <p className="recipe-category">
+                  Category: {meal[0].strCategory}
+                </p>
+                <p className="recipe-heading">
+                  {meal[0].strMeal.toUpperCase()}
+                </p>
+                <div className="recipe-line"></div>
+                <div className="recipe-description">
+                  {meal[0].strInstructions}
+                </div>
+                <div className="recipe-buttons">
+                  <button>Watch It</button>
+                  <button>Instructions</button>
+                  <button>ingredients</button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div></div>
         </div>
       ) : null}
     </div>
