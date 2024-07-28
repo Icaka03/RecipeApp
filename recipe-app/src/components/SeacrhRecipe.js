@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 export default function SearchRecipe() {
   const [search, setSearch] = useState("");
-  const [meal, setMeal] = useState("");
+  const [meals, setMeals] = useState([]);
   const handleClick = (evt) => {
     if (evt.key === "Enter") {
       searchMeal();
@@ -14,8 +14,8 @@ export default function SearchRecipe() {
   const searchMeal = () => {
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
       .then((res) => res.json([0]))
-      .then((json) => setMeal(json.meals));
-    console.log(meal);
+      .then((json) => setMeals(json.meals));
+    console.log(meals);
     console.log(search);
   };
   return (
@@ -28,34 +28,34 @@ export default function SearchRecipe() {
         onKeyPress={handleClick}
       />
       <button onClick={searchMeal}>Search</button>
-      {meal ? (
-        <div className="search-recipe-box">
-          <div
-            className="random-box"
-            style={{ backgroundImage: `url(${meal[0].strMealThumb})` }}
-          >
-            <div className="recipe-info">
-              <div className="recipe-border">
-                <p className="recipe-category">
-                  Category: {meal[0].strCategory}
-                </p>
-                <p className="recipe-heading">
-                  {meal[0].strMeal.toUpperCase()}
-                </p>
-                <div className="recipe-line"></div>
-                <div className="recipe-description">
-                  {meal[0].strInstructions}
-                </div>
-                <div className="recipe-buttons">
-                  <button>Watch It</button>
-                  <button>Instructions</button>
-                  <button>ingredients</button>
+      {meals?.map((meal) => {
+        return (
+          <div className="search-recipe-box">
+            <div
+              className="random-box"
+              style={{ backgroundImage: `url(${meal.strMealThumb})` }}
+            >
+              <div className="recipe-info">
+                <div className="recipe-border">
+                  <p className="recipe-category">
+                    Category: {meal.strCategory}
+                  </p>
+                  <p className="recipe-heading">{meal.strMeal.toUpperCase()}</p>
+                  <div className="recipe-line"></div>
+                  <div className="recipe-description">
+                    {meal.strInstructions}
+                  </div>
+                  <div className="recipe-buttons">
+                    <button>Watch It</button>
+                    <button>Instructions</button>
+                    <button>ingredients</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      ) : null}
+        );
+      })}
     </div>
   );
 }

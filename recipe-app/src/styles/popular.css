@@ -128,12 +128,13 @@
   z-index: 1;
   min-height: 500px;
   border-radius: 10px;
-  max-height: 100vh;
+  max-height: 97vh;
 }
 
 .popup-heading {
   text-align: center;
   color: #71bf3e;
+  width: 40%;
 }
 
 .popup-flex {
@@ -148,11 +149,14 @@
   background-color: #71bf3e;
   border-radius: 50%;
   text-align: center;
-  padding: 10px 13px;
+  padding: 6px 13px;
   position: absolute;
   left: 94%;
   top: -20%;
   border: none;
+  color: #fff;
+  font-size: 25px;
+  cursor: pointer;
 }
 
 .popup-text {
