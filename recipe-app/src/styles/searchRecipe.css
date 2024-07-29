@@ -3,11 +3,12 @@
 }
 
 .input-recipe {
-  width: 85%;
+  width: 100%;
   margin: 0 auto;
   display: block;
   padding: 20px 0px;
   border-radius: 10px;
+  border: 2px solid #71bf3e;
 }
 
 .search-recipe-box {
@@ -55,6 +56,25 @@
   white-space: nowrap;
   width: 85%;
   margin: 0 auto;
+}
+
+.loupe-icon {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  filter: invert(48%) sepia(76%) saturate(334%) hue-rotate(83deg)
+    brightness(89%) contrast(88%);
+}
+
+.input-holder {
+  display: flex;
+  align-items: center;
+  width: 85%;
+  margin: 0 auto;
+  position: relative;
+  margin-bottom: 25px;
 }
 @media only screen and (min-width: 1500px) {
   .search-text-heading {

@@ -1,6 +1,13 @@
 import "../styles/recipeBox.css";
 
-export default function RecipeBox({ title, img, category, origin }) {
+export default function RecipeBox({
+  title,
+  img,
+  category,
+  origin,
+  instructionSetter,
+  ingridientsSetter,
+}) {
   return (
     <div className="recipe-box">
       <div className="img-box">
@@ -18,8 +25,8 @@ export default function RecipeBox({ title, img, category, origin }) {
         <p>From: {origin}</p>
       </div>
       <div className="recipe-box-buttons">
-        <button>Instructions</button>
-        <button>Ingridients</button>
+        <button onClick={instructionSetter}>Instructions</button>
+        <button onClick={ingridientsSetter}>Ingridients</button>
       </div>
     </div>
   );
