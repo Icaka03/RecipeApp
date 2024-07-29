@@ -51,18 +51,6 @@
   padding: 15px 15px;
 }
 
-.recipe-category {
-  text-align: center;
-  width: 60%;
-  margin: 0 auto;
-  display: block;
-  font-size: 20px;
-  background-color: #71bf3e;
-  color: #fff;
-  padding: 10px 5px;
-  margin-top: 20px;
-}
-
 .recipe-border {
   border: 2px solid #efeae7;
   height: 98%;

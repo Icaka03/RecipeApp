@@ -31,7 +31,16 @@ export default function SearchRecipe() {
       <button onClick={searchMeal}>Search</button>
       <div className="recipe-wrapper">
         {meals?.map((meal) => {
-          return <RecipeBox title={meal.strMeal.toUpperCase()}></RecipeBox>;
+          return (
+            <RecipeBox
+              title={meal.strMeal.toUpperCase()}
+              img={meal.strMealThumb}
+              category={meal.strCategory}
+              origin={meal.strArea}
+            >
+              {}
+            </RecipeBox>
+          );
         })}
       </div>
     </div>
