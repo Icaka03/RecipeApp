@@ -67,6 +67,7 @@ export default function SearchRecipe() {
           </div>
         </Popup>
       ) : null}
+      <h1 className="input-title">Search Recipe By It's Name </h1>
       <div className="input-holder">
         <input
           className="input-recipe"

@@ -51,11 +51,11 @@
 }
 
 .recipe-wrapper {
-  display: flex;
-  overflow: auto;
+  display: grid;
   white-space: nowrap;
-  width: 85%;
+  width: 86%;
   margin: 0 auto;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .loupe-icon {
@@ -76,9 +76,19 @@
   position: relative;
   margin-bottom: 25px;
 }
+
+.input-title {
+  font-size: 50px;
+  width: 85%;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
 @media only screen and (min-width: 1500px) {
   .search-text-heading {
     font-size: 35px;
     padding: 40px 0px;
+  }
+  .recipe-wrapper {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }

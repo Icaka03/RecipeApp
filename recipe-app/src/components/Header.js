@@ -2,8 +2,18 @@ import "../styles/header.css";
 import userIcon from "../images/user.png";
 import plateimg from "../images/plateimg.png";
 import { signInWithGoogle } from "../firebase-config";
+import React, { useEffect, useState } from "react";
 
 export default function Header() {
+  // const userName = localStorage.getItem("name");
+  const [userName, setUserName] = useState("");
+  const handleClick = () => {
+    signInWithGoogle();
+    setUserName(localStorage.getItem("name"));
+  };
+  useEffect(() => {
+    console.log("myVariable has changed: " + userName);
+  }, [userName]);
   return (
     <div className="header">
       <nav className="nav">
@@ -13,12 +23,19 @@ export default function Header() {
           <li className="menu-item">Recipes</li>
           <li className="menu-item">Your Recipes</li>
         </ul>
-        <img
-          src={userIcon}
-          alt=""
-          className="user-icon"
-          onClick={signInWithGoogle}
-        />
+        <div className="user-data">
+          <img
+            src={userIcon}
+            alt=""
+            className="user-icon"
+            onClick={() => {
+              signInWithGoogle();
+              setUserName(localStorage.getItem("name"));
+            }}
+          />
+          {userName ? <p>{userName}</p> : null}
+          {/* <button onClick={setUserName("")}>Log Out</button> */}
+        </div>
       </nav>
       <div className="header-section">
         <div className="header-section-text">

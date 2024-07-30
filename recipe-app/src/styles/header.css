@@ -76,6 +76,15 @@
   filter: invert(100%) brightness(100%);
   cursor: pointer;
 }
+
+.user-data {
+  display: flex;
+}
+
+.user-data p {
+  font-size: 20px;
+  margin-left: 20px;
+}
 @media only screen and (max-width: 1500px) {
   .header-section-text h1 {
     font-size: 55px;

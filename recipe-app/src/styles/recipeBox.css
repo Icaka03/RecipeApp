@@ -1,9 +1,11 @@
 .recipe-box {
-  background-color: #d6f497;
-  height: 43vh;
+  background-color: #674b15;
+  min-height: 45vh;
   margin-right: 70px;
   border-radius: 15px;
   position: relative;
+  color: #fff;
+  margin-bottom: 30px;
 }
 
 .img-size {
@@ -17,7 +19,7 @@
 }
 
 .recipe-box-buttons button {
-  background-color: #71bf3e;
+  background-color: #53487b;
   border: none;
   border-radius: 5px;
   padding: 10px 15px;
@@ -38,7 +40,7 @@
 .heading {
   display: flex;
   align-items: center;
-  width: 350px;
+  width: 320px;
   justify-content: space-around;
   text-wrap: wrap;
   margin-top: 10px;
@@ -51,6 +53,6 @@
 }
 @media only screen and (min-width: 1500px) {
   .recipe-box {
-    height: 33vh;
+    min-height: 34vh;
   }
 }
