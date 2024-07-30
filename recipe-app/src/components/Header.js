@@ -7,10 +7,7 @@ import React, { useEffect, useState } from "react";
 export default function Header() {
   // const userName = localStorage.getItem("name");
   const [userName, setUserName] = useState("");
-  const handleClick = () => {
-    signInWithGoogle();
-    setUserName(localStorage.getItem("name"));
-  };
+
   useEffect(() => {
     console.log("myVariable has changed: " + userName);
   }, [userName]);
