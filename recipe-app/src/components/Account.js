@@ -1,7 +1,10 @@
+import Navbar from "./Navbar";
+
 export default function Account() {
   return (
     <div>
-      <div></div>
+      <Navbar />
+      <div>asasa</div>
     </div>
   );
 }
