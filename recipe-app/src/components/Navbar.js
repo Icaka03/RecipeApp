@@ -12,6 +12,12 @@ export default function Navbar() {
     console.log(userName);
   }, [userName]);
 
+  const handleClick = async () => {
+    await signInWithGoogle();
+    setUserName(localStorage.getItem("name"));
+    console.log(userName);
+    console.log("tova e storage = " + localStorage.getItem("name"));
+  };
   return (
     <nav className="nav">
       <p>CookApp</p>
@@ -42,11 +48,12 @@ export default function Navbar() {
             src={userIcon}
             alt=""
             className="user-icon"
-            onClick={() => {
-              signInWithGoogle();
-              setUserName(localStorage.getItem("name"));
-              console.log(userName);
-            }}
+            // onClick={() => {
+            // signInWithGoogle();
+            // setUserName(localStorage.getItem("name"));
+            // console.log(userName);
+            // }}
+            onClick={handleClick}
           />
         )}
 
