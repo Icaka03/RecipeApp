@@ -17,7 +17,7 @@ export default function Navbar() {
       <p>CookApp</p>
 
       <ul className="menu">
-        <Link to="/">
+        <Link to="/" style={{ textDecoration: "none", color: "#fff" }}>
           <li className="menu-item">Home</li>
         </Link>
 
@@ -25,7 +25,19 @@ export default function Navbar() {
         <li className="menu-item">Your Recipes</li>
       </ul>
       <div className="user-data">
-        <Link to="/account">
+        {isLogged ? (
+          <Link to="/account">
+            <img
+              src={userIcon}
+              alt=""
+              className="user-icon"
+              onClick={() => {
+                setUserName(localStorage.getItem("name"));
+                console.log(userName);
+              }}
+            />
+          </Link>
+        ) : (
           <img
             src={userIcon}
             alt=""
@@ -36,17 +48,13 @@ export default function Navbar() {
               console.log(userName);
             }}
           />
-        </Link>
-        {isLogged ? <p>{userName}</p> : null}
-        <button
-          onClick={() => {
-            setUserName("");
-            localStorage.clear();
-            console.log(userName);
-          }}
-        >
-          Log Out
-        </button>
+        )}
+
+        {isLogged ? (
+          <Link to="/account" style={{ textDecoration: "none", color: "#fff" }}>
+            <p>{userName}</p>
+          </Link>
+        ) : null}
       </div>
     </nav>
   );

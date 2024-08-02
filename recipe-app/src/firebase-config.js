@@ -29,11 +29,13 @@ export const signInWithGoogle = () => {
       const email = result.user.email;
       const profilePic = result.user.photoURL;
       const isAnonymous = result.user.isAnonymous;
+      const profileImg = result.user.photoURL;
 
       localStorage.setItem("name", name);
       localStorage.setItem("email", email);
       localStorage.setItem("profilePic", profilePic);
       localStorage.setItem("isAnonymous", isAnonymous);
+      localStorage.setItem("profileImg", profileImg);
       console.log(result);
     })
     .catch((err) => {
