@@ -21,8 +21,9 @@ export default function Navbar() {
   };
   return (
     <nav className="nav">
-      <p>CookApp</p>
-
+      <Link to="/" style={{ textDecoration: "none", color: "#fff" }}>
+        <p>CookApp</p>
+      </Link>
       <ul className="menu">
         <Link to="/" style={{ textDecoration: "none", color: "#fff" }}>
           <li className="menu-item">Home</li>

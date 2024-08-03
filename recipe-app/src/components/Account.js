@@ -1,10 +1,28 @@
 import Navbar from "./Navbar";
 import "../styles/account.css";
 import { Link } from "react-router-dom";
+// _________________________________________________________//
+import { auth } from "../firebase-config";
+import { pushStringToFirestore } from "../firestore";
+import React, { useState } from "react";
+
 export default function Account() {
+  //_________________________________________________________
+  const [stringData, setStringData] = useState("");
+
+  const handleButtonClick = async () => {
+    const user = auth.currentUser;
+    if (user) {
+      await pushStringToFirestore(user.uid, stringData);
+    } else {
+      console.error("No user is signed in");
+    }
+  };
+  //_________________________________________________________
   const userName = localStorage.getItem("name");
   const profileImg = localStorage.getItem("profileImg");
   const userEmail = localStorage.getItem("email");
+
   return (
     <>
       <Navbar />
@@ -35,6 +53,15 @@ export default function Account() {
               Manage your recipes in this dashboard. Lorem ipsum random text
               need more info
             </p>
+            <input
+              type="text"
+              value={stringData}
+              onChange={(e) => setStringData(e.target.value)}
+              placeholder="Enter your string"
+            />
+            <button onClick={handleButtonClick}>
+              Push String to Firestore
+            </button>
           </div>
         </div>
       </div>
