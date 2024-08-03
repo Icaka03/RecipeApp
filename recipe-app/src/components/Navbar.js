@@ -7,6 +7,7 @@ import "../styles/header.css";
 export default function Navbar() {
   const [userName, setUserName] = useState("");
   const isLogged = localStorage.getItem("isAnonymous");
+  const profileImg = localStorage.getItem("profileImg");
   useEffect(() => {
     setUserName(localStorage.getItem("name"));
     console.log(userName);
@@ -34,12 +35,11 @@ export default function Navbar() {
         {isLogged ? (
           <Link to="/account">
             <img
-              src={userIcon}
+              src={profileImg}
               alt=""
-              className="user-icon"
+              className="user-icon-logged"
               onClick={() => {
                 setUserName(localStorage.getItem("name"));
-                console.log(userName);
               }}
             />
           </Link>
@@ -48,11 +48,6 @@ export default function Navbar() {
             src={userIcon}
             alt=""
             className="user-icon"
-            // onClick={() => {
-            // signInWithGoogle();
-            // setUserName(localStorage.getItem("name"));
-            // console.log(userName);
-            // }}
             onClick={handleClick}
           />
         )}
