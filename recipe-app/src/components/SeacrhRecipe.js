@@ -39,6 +39,7 @@ export default function SearchRecipe() {
     console.log(instructionId);
     console.log(ingridienMeal);
   };
+
   return (
     <div className="input-box">
       {instructionPopup ? (
@@ -92,6 +93,7 @@ export default function SearchRecipe() {
               img={meal.strMealThumb}
               category={meal.strCategory}
               origin={meal.strArea}
+              id={meal.idMeal}
               instructionSetter={() => {
                 setMealInstruction(meal.strInstructions);
                 setMealTitle(meal.strMeal);

@@ -19,7 +19,7 @@ export default function Popular() {
     console.log(meal);
   }, [meal]);
   //__________________________________________________
-  const [recipeName, setRecipeName] = useState("id255624");
+  const [recipeName, setRecipeName] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,7 +29,6 @@ export default function Popular() {
         user: localStorage.getItem("name"),
       });
       setRecipeName(""); // Reset the input field
-      alert("add recipeId = " + recipeName + "and user name =");
     } catch (e) {
       console.error("Error adding document: ", e);
     }
