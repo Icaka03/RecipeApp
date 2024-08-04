@@ -6,7 +6,7 @@ import "../styles/header.css";
 
 export default function Navbar() {
   const [userName, setUserName] = useState("");
-  const isLogged = localStorage.getItem("isAnonymous");
+  const isLogged = localStorage.getItem("name");
   const profileImg = localStorage.getItem("profileImg");
   useEffect(() => {
     setUserName(localStorage.getItem("name"));

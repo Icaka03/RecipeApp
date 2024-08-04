@@ -2,6 +2,8 @@ import "../styles/popular.css";
 import React, { useState, useEffect } from "react";
 import getIngridients from "../utilities/getIngridients";
 import Popup from "./Popup";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebase-config";
 export default function Popular() {
   const [meal, setMeal] = useState(null);
   const [instructionPopup, setInstructionPopup] = useState(false);
@@ -16,7 +18,23 @@ export default function Popular() {
   useEffect(() => {
     console.log(meal);
   }, [meal]);
+  //__________________________________________________
+  const [recipeName, setRecipeName] = useState("id255624");
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await addDoc(collection(db, "RecipesID"), {
+        recipeID: recipeName,
+        user: localStorage.getItem("name"),
+      });
+      setRecipeName(""); // Reset the input field
+      alert("add recipeId = " + recipeName + "and user name =");
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  };
+  //__________________________________________________
   return (
     <div className="popular-section">
       {instructionPopup ? (
@@ -81,6 +99,17 @@ export default function Popular() {
             </div>
           </div>
         ) : null}
+      </div>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <button
+            onClick={() => {
+              setRecipeName(meal.idMeal);
+            }}
+          >
+            Set recipe Id
+          </button>
+        </form>
       </div>
     </div>
   );
