@@ -11,7 +11,7 @@ export default function Account() {
   const userEmail = localStorage.getItem("email");
   const no = true;
   const [recipes, setRecipes] = useState([]);
-
+  const [meals, setMeals] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       const querySnapshot = await getDocs(collection(db, "RecipesID"));
@@ -27,9 +27,30 @@ export default function Account() {
   }, []);
 
   const filteredRecipes = recipes.filter((recipe) => recipe.user === userName);
-  console.log("username e " + userName);
-  console.log("recipe usera e " + recipes.user);
-  console.log(recipes.recipeID);
+
+  console.log(filteredRecipes.length);
+  console.log(recipes);
+  console.log(filteredRecipes);
+  useEffect(() => {
+    if (filteredRecipes.length > 0) {
+      fetch(
+        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${filteredRecipes[0].recipeID}`
+      )
+        .then((res) => res.json([0]))
+        .then((json) => setMeals(json.meals));
+      console.log(filteredRecipes[0].recipeID);
+      console.log("da");
+      console.log(meals);
+    }
+  }, [filteredRecipes.length]);
+
+  //   useEffect(() => {
+  //     fetch(`https://www.themealdb.com/api/json/v1/1/random.php
+  // `)
+  //       .then((res) => res.json())
+  //       .then((json) => setMeals(json.meals[0]))
+  //       .catch((error) => console.log(error));
+  //   }, []);
   return (
     <>
       <Navbar />
@@ -61,11 +82,12 @@ export default function Account() {
               need more info
             </p>
             {no ? (
-              <p>
+              <div>
                 {filteredRecipes.map((recipe) => (
                   <li key={recipe.id}>{recipe.recipeID}</li>
                 ))}
-              </p>
+                <p>{meals ? <p>{meals.strMeal}</p> : null}</p>
+              </div>
             ) : (
               <p>no recipes</p>
             )}
