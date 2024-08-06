@@ -9,7 +9,6 @@ export default function Account() {
   const userName = localStorage.getItem("name");
   const profileImg = localStorage.getItem("profileImg");
   const userEmail = localStorage.getItem("email");
-  const no = true;
   const [recipes, setRecipes] = useState([]);
   const [meals, setMeals] = useState([]);
   useEffect(() => {
@@ -32,16 +31,7 @@ export default function Account() {
   console.log(recipes);
   console.log(filteredRecipes);
   useEffect(() => {
-    if (filteredRecipes.length > 0) {
-      fetch(
-        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${filteredRecipes[0].recipeID}`
-      )
-        .then((res) => res.json())
-        .then((json) => setMeals(json.meals[0]));
-      console.log(filteredRecipes[0].recipeID);
-      console.log("da");
-      console.log(meals);
-    }
+    getMeals();
   }, [filteredRecipes.length]);
 
   //   useEffect(() => {
@@ -51,6 +41,31 @@ export default function Account() {
   //       .then((json) => setMeals(json.meals[0]))
   //       .catch((error) => console.log(error));
   //   }, []);
+
+  async function getMeals() {
+    if (filteredRecipes.length == 0) {
+      return;
+    }
+
+    let meals = [];
+
+    for (const recipe of filteredRecipes) {
+      const result = await fetch(
+        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipe.recipeID}`
+      );
+      const data = await result.json();
+
+      meals = meals.concat(data.meals);
+    }
+
+    setMeals(meals);
+
+    //   .then((res) => res.json())
+    //   .then((json) => setMeals(json.meals[0]));
+    // console.log(filteredRecipes[0].recipeID);
+    // console.log("da");
+    // console.log(meals);
+  }
   return (
     <>
       <Navbar />
@@ -81,16 +96,9 @@ export default function Account() {
               Manage your recipes in this dashboard. Lorem ipsum random text
               need more info
             </p>
-            {no ? (
-              <div>
-                {filteredRecipes.map((recipe) => (
-                  <li key={recipe.id}>{recipe.recipeID}</li>
-                ))}
-                <p>{meals ? <p>{meals.strMeal}</p> : null}</p>
-              </div>
-            ) : (
-              <p>no recipes</p>
-            )}
+            {meals.map((meal) => {
+              return <li key={meal.idMeal}>{meal.strMeal}</li>;
+            })}
           </div>
         </div>
       </div>
