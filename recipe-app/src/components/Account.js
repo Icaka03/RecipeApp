@@ -36,8 +36,8 @@ export default function Account() {
       fetch(
         `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${filteredRecipes[0].recipeID}`
       )
-        .then((res) => res.json([0]))
-        .then((json) => setMeals(json.meals));
+        .then((res) => res.json())
+        .then((json) => setMeals(json.meals[0]));
       console.log(filteredRecipes[0].recipeID);
       console.log("da");
       console.log(meals);
