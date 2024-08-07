@@ -11,6 +11,8 @@ export default function Account() {
   const userEmail = localStorage.getItem("email");
   const [recipes, setRecipes] = useState([]);
   const [meals, setMeals] = useState([]);
+  // const [instructionPopup, setInstructionPopup] = useState(false);
+  // const [ingredientsPopup, setIngredientsPopup] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       const querySnapshot = await getDocs(collection(db, "RecipesID"));
@@ -34,14 +36,6 @@ export default function Account() {
     getMeals();
   }, [filteredRecipes.length]);
 
-  //   useEffect(() => {
-  //     fetch(`https://www.themealdb.com/api/json/v1/1/random.php
-  // `)
-  //       .then((res) => res.json())
-  //       .then((json) => setMeals(json.meals[0]))
-  //       .catch((error) => console.log(error));
-  //   }, []);
-
   async function getMeals() {
     if (filteredRecipes.length == 0) {
       return;
@@ -59,12 +53,6 @@ export default function Account() {
     }
 
     setMeals(meals);
-
-    //   .then((res) => res.json())
-    //   .then((json) => setMeals(json.meals[0]));
-    // console.log(filteredRecipes[0].recipeID);
-    // console.log("da");
-    // console.log(meals);
   }
   return (
     <>
@@ -96,8 +84,25 @@ export default function Account() {
               Manage your recipes in this dashboard. Lorem ipsum random text
               need more info
             </p>
-            {meals.map((meal) => {
-              return <li key={meal.idMeal}>{meal.strMeal}</li>;
+            {meals?.map((meal) => {
+              return (
+                <div key={meal.idMeal} className="favorite-holder">
+                  <div className="favorite-recipe-box-map">
+                    <div className="favorite-recipe-img-box">
+                      <img
+                        src={meal.strMealThumb}
+                        alt="favorite-img"
+                        className="favorite-img"
+                      />
+                    </div>
+                    <div className="favorite-recipe-text">
+                      <p className="favorite-category">{meal.strCategory}</p>
+                      <p className="favorite-title">{meal.strMeal}</p>
+                    </div>
+                  </div>
+                  <div className="line"></div>
+                </div>
+              );
             })}
           </div>
         </div>
