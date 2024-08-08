@@ -73,7 +73,7 @@ body {
 }
 
 .favorite-holder{
-
+position: relative;
 }
 
 .favorite-recipe-box-map{
@@ -105,6 +105,16 @@ width: 35%;
 .favorite-title{
   margin-top: 10px;
   font-size: 20px;  
+}
+
+.trash-bin-icon{
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  filter: brightness(0) saturate(100%) invert(47%) sepia(100%) saturate(609%) hue-rotate(76deg) brightness(92%) contrast(85%);
+  cursor: pointer;
 }
 @media only screen and (min-width: 1500px) {
   .account-box {

@@ -3,14 +3,24 @@ import "../styles/account.css";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { db } from "../firebase-config";
-import { collection, getDocs } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  doc,
+  deleteDoc,
+  addDoc,
+} from "firebase/firestore";
 
+import favorite from "../images/favactive.png";
+import unFavorite from "../images/favpassive.png";
 export default function Account() {
   const userName = localStorage.getItem("name");
   const profileImg = localStorage.getItem("profileImg");
   const userEmail = localStorage.getItem("email");
   const [recipes, setRecipes] = useState([]);
   const [meals, setMeals] = useState([]);
+  const [active, setActive] = useState(true);
+  const [recipeName, setRecipeName] = useState("");
   // const [instructionPopup, setInstructionPopup] = useState(false);
   // const [ingredientsPopup, setIngredientsPopup] = useState(false);
   useEffect(() => {
@@ -48,12 +58,49 @@ export default function Account() {
         `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipe.recipeID}`
       );
       const data = await result.json();
+      data.meals[0].filteredId = recipe.id;
 
       meals = meals.concat(data.meals);
     }
 
     setMeals(meals);
   }
+
+  const deleteDocument = async (id) => {
+    try {
+      // Reference to the specific document you want to delete
+      console.log(id);
+      const docRef = doc(db, "RecipesID", id);
+
+      // Delete the document
+      await deleteDoc(docRef);
+
+      // setMeals(() => {
+      //   return meals.filter((meal) => meal.filteredId !== id);
+      // });
+      setActive(!active);
+      console.log("Document deleted successfully");
+    } catch (error) {
+      console.error("Error deleting document: ", error);
+    }
+  };
+
+  const addRecipeToDb = async (id) => {
+    try {
+      await addDoc(collection(db, "RecipesID"), {
+        recipeID: id,
+        user: localStorage.getItem("name"),
+      });
+
+      setActive(!active);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  };
+
+  const handleFavorite = async (meal) => {
+    active ? deleteDocument(meal.filteredId) : addRecipeToDb(meal.idMeal);
+  };
   return (
     <>
       <Navbar />
@@ -98,6 +145,15 @@ export default function Account() {
                     <div className="favorite-recipe-text">
                       <p className="favorite-category">{meal.strCategory}</p>
                       <p className="favorite-title">{meal.strMeal}</p>
+                      <div>
+                        <button>ingredients</button>
+                        <button>Instruction</button>
+                      </div>
+                      <img
+                        src={active ? favorite : unFavorite}
+                        className="trash-bin-icon"
+                        onClick={() => handleFavorite(meal)}
+                      />
                     </div>
                   </div>
                   <div className="line"></div>
@@ -110,3 +166,5 @@ export default function Account() {
     </>
   );
 }
+
+// deleteDocument(meal.filteredId)
