@@ -20,7 +20,7 @@ export default function Account() {
   const [recipes, setRecipes] = useState([]);
   const [meals, setMeals] = useState([]);
   const [active, setActive] = useState(true);
-  const [recipeName, setRecipeName] = useState("");
+  // const [recipeName, setRecipeName] = useState("");
   // const [instructionPopup, setInstructionPopup] = useState(false);
   // const [ingredientsPopup, setIngredientsPopup] = useState(false);
   useEffect(() => {
@@ -153,6 +153,7 @@ export default function Account() {
                         src={active ? favorite : unFavorite}
                         className="trash-bin-icon"
                         onClick={() => handleFavorite(meal)}
+                        alt="favorite-img"
                       />
                     </div>
                   </div>

@@ -119,6 +119,19 @@
   max-height: 97vh;
 }
 
+.popup-video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ecf0f1;
+  width: 50%;
+  z-index: 1;
+  min-height: 500px;
+  border-radius: 10px;
+  max-height: 97vh;
+}
+
 .popup-heading {
   text-align: center;
   color: #71bf3e;
@@ -154,6 +167,12 @@
   letter-spacing: 1.1px;
   font-size: 20px;
   padding-bottom: 20px;
+}
+
+.popup-video-popular {
+  width: 640px;
+  margin: 0 auto;
+  padding-bottom: 50px;
 }
 @media only screen and (min-width: 1500px) {
   .recipe-info {
