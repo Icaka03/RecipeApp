@@ -50,10 +50,6 @@ export default function Popular() {
     },
   };
 
-  const onReady = (event) => {
-    event.target.pauseVideo();
-  };
-
   const handleYouTubeVideo = () => {
     setYoutubeVideo(true);
     setYoutubeLink(meal.strYoutube.split("v=")[1].split("&")[0]);
@@ -96,11 +92,7 @@ export default function Popular() {
           }}
         >
           <div className="popup-video-popular">
-            <YouTube
-              videoId={youtubeLink}
-              opts={videoOptions}
-              onReady={onReady}
-            />
+            <YouTube videoId={youtubeLink} opts={videoOptions} />
           </div>
         </YouTubeVideoPopup>
       ) : null}
