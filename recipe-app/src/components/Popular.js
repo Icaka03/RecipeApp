@@ -6,12 +6,15 @@ import YouTubeVideoPopup from "./YouTubeVideoPopup";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase-config";
 import YouTube from "react-youtube";
+import favoritePassive from "../images/favpassive.png";
+import favoriteActive from "../images/favactive.png";
 export default function Popular() {
   const [meal, setMeal] = useState(null);
   const [instructionPopup, setInstructionPopup] = useState(false);
   const [ingredientsPopup, setIngredientsPopup] = useState(false);
   const [youtubeVideo, setYoutubeVideo] = useState(false);
   const [youtubeLink, setYoutubeLink] = useState("");
+  const [active, setActive] = useState(true);
 
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php
@@ -27,6 +30,7 @@ export default function Popular() {
   const [recipeName, setRecipeName] = useState("");
 
   const handleSubmit = async (e) => {
+    setActive(!active);
     e.preventDefault();
     try {
       await addDoc(collection(db, "RecipesID"), {
@@ -132,20 +136,22 @@ export default function Popular() {
                 </div>
               </div>
             </div>
+            <form onSubmit={handleSubmit} className="form">
+              <button className="form-button">
+                <img
+                  src={active ? favoritePassive : favoriteActive}
+                  onClick={() => {
+                    setRecipeName(meal.idMeal);
+                  }}
+                  alt="favPassive"
+                  className="favorite-icon-popular"
+                />
+              </button>
+            </form>
           </div>
         ) : null}
       </div>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <button
-            onClick={() => {
-              setRecipeName(meal.idMeal);
-            }}
-          >
-            Set recipe Id
-          </button>
-        </form>
-      </div>
+      <div></div>
     </div>
   );
 }
