@@ -19,6 +19,7 @@ export default function Navbar() {
     }
   };
   useEffect(() => {
+    handleResize();
     window.addEventListener("resize", handleResize);
     console.log(window.innerWidth);
 

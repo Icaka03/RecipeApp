@@ -92,3 +92,9 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
+
+@media all and (max-width: 700px) {
+  .input-box {
+    margin-top: 160px;
+  }
+}

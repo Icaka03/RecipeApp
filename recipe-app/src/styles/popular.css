@@ -208,3 +208,40 @@
     -webkit-line-clamp: 5;
   }
 }
+
+@media all and (max-width: 700px) {
+  .popular-section {
+    width: 100%;
+    margin-top: 30px;
+    text-align: center;
+  }
+  .popular-heading {
+    font-size: 40px;
+  }
+  .recipe-info {
+    background-color: #fff;
+    width: 90%;
+    height: 85%;
+    padding: 0px;
+    position: absolute;
+    bottom: -120px;
+    border-radius: 10px;
+  }
+  .recipe-description {
+    -webkit-line-clamp: 3;
+  }
+
+  .recipe-buttons {
+    flex-direction: column;
+    width: 50%;
+  }
+  .random-box {
+    border-radius: 0px;
+  }
+  .recipe-border {
+    border-radius: 10px;
+  }
+  .recipe-buttons button {
+    margin-bottom: 10px;
+  }
+}
