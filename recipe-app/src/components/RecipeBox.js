@@ -2,6 +2,8 @@ import "../styles/recipeBox.css";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase-config";
 import React, { useState } from "react";
+import favoritePassive from "../images/favpassive.png";
+import favoriteActive from "../images/favactive.png";
 
 export default function RecipeBox({
   title,
@@ -14,8 +16,9 @@ export default function RecipeBox({
 }) {
   //__________________________________________________
   const [recipeName, setRecipeName] = useState("");
-
+  const [active, setActive] = useState(true);
   const handleSubmit = async (e) => {
+    setActive(!active);
     e.preventDefault();
     try {
       await addDoc(collection(db, "RecipesID"), {
@@ -47,16 +50,19 @@ export default function RecipeBox({
       <div className="recipe-box-buttons">
         <button onClick={instructionSetter}>Instructions</button>
         <button onClick={ingridientsSetter}>Ingridients</button>
-        <form onSubmit={handleSubmit}>
-          <button
+      </div>
+      <form onSubmit={handleSubmit}>
+        <button className="form-button">
+          <img
+            src={active ? favoritePassive : favoriteActive}
             onClick={() => {
               setRecipeName(id);
             }}
-          >
-            Id
-          </button>
-        </form>
-      </div>
+            alt="favPassive"
+            className="favorite-icon-popular recipe-box-icon"
+          />
+        </button>
+      </form>
     </div>
   );
 }
