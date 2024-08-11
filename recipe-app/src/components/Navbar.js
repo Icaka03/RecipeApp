@@ -43,10 +43,12 @@ export default function Navbar() {
       {isMobile ? (
         <img src={burgerMenu} alt="burger-menu" className="burger-menu-icon" />
       ) : (
-        <div>
-          <Link to="/" style={{ textDecoration: "none", color: "#fff" }}>
-            <p>CookApp</p>
-          </Link>
+        <>
+          <div>
+            <Link to="/" style={{ textDecoration: "none", color: "#fff" }}>
+              <p>CookApp</p>
+            </Link>
+          </div>
           <ul className="menu">
             <Link to="/" style={{ textDecoration: "none", color: "#fff" }}>
               <li className="menu-item">Home</li>
@@ -69,30 +71,9 @@ export default function Navbar() {
               </li>
             )}
           </ul>
-        </div>
+        </>
       )}
-      {/* <Link to="/" style={{ textDecoration: "none", color: "#fff" }}>
-        <p>CookApp</p>
-      </Link>
-      <ul className="menu">
-        <Link to="/" style={{ textDecoration: "none", color: "#fff" }}>
-          <li className="menu-item">Home</li>
-        </Link>
 
-        <li className="menu-item">Recipes</li>
-        {isLogged ? (
-          <Link to="/account" style={{ textDecoration: "none", color: "#fff" }}>
-            <li className="menu-item">Your Recipes</li>
-          </Link>
-        ) : (
-          <li
-            className="menu-item"
-            onClick={() => alert("You need to be logged in First")}
-          >
-            Your Recipes
-          </li>
-        )}
-      </ul> */}
       <div className="user-data">
         {isLogged ? (
           <Link to="/account">
