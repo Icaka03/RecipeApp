@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import userIcon from "../images/user.png";
+import burgerMenu from "../images/burger-bar.png";
 import { signInWithGoogle } from "../firebase-config";
 import React, { useEffect, useState } from "react";
 import "../styles/header.css";
@@ -8,6 +9,24 @@ export default function Navbar() {
   const [userName, setUserName] = useState("");
   const isLogged = localStorage.getItem("name");
   const profileImg = localStorage.getItem("profileImg");
+  const [isMobile, setIsMobile] = useState(false);
+
+  const handleResize = () => {
+    if (window.innerWidth < 566) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    console.log(window.innerWidth);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     setUserName(localStorage.getItem("name"));
     console.log(userName);
@@ -21,7 +40,38 @@ export default function Navbar() {
   };
   return (
     <nav className="nav">
-      <Link to="/" style={{ textDecoration: "none", color: "#fff" }}>
+      {isMobile ? (
+        <img src={burgerMenu} alt="burger-menu" className="burger-menu-icon" />
+      ) : (
+        <div>
+          <Link to="/" style={{ textDecoration: "none", color: "#fff" }}>
+            <p>CookApp</p>
+          </Link>
+          <ul className="menu">
+            <Link to="/" style={{ textDecoration: "none", color: "#fff" }}>
+              <li className="menu-item">Home</li>
+            </Link>
+
+            <li className="menu-item">Recipes</li>
+            {isLogged ? (
+              <Link
+                to="/account"
+                style={{ textDecoration: "none", color: "#fff" }}
+              >
+                <li className="menu-item">Your Recipes</li>
+              </Link>
+            ) : (
+              <li
+                className="menu-item"
+                onClick={() => alert("You need to be logged in First")}
+              >
+                Your Recipes
+              </li>
+            )}
+          </ul>
+        </div>
+      )}
+      {/* <Link to="/" style={{ textDecoration: "none", color: "#fff" }}>
         <p>CookApp</p>
       </Link>
       <ul className="menu">
@@ -30,8 +80,19 @@ export default function Navbar() {
         </Link>
 
         <li className="menu-item">Recipes</li>
-        <li className="menu-item">Your Recipes</li>
-      </ul>
+        {isLogged ? (
+          <Link to="/account" style={{ textDecoration: "none", color: "#fff" }}>
+            <li className="menu-item">Your Recipes</li>
+          </Link>
+        ) : (
+          <li
+            className="menu-item"
+            onClick={() => alert("You need to be logged in First")}
+          >
+            Your Recipes
+          </li>
+        )}
+      </ul> */}
       <div className="user-data">
         {isLogged ? (
           <Link to="/account">

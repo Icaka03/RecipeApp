@@ -100,6 +100,7 @@ export default function Popular() {
           </div>
         </YouTubeVideoPopup>
       ) : null}
+
       <div className="wrapper">
         <div>
           <h1 className="popular-heading">Random Recipe Of The Day</h1>

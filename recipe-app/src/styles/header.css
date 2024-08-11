@@ -94,6 +94,11 @@
   font-size: 20px;
   margin-left: 20px;
 }
+
+.burger-menu-icon {
+  width: 30px;
+  filter: invert(100%) brightness(100%);
+}
 @media only screen and (max-width: 1500px) {
   .header-section-text h1 {
     font-size: 55px;
