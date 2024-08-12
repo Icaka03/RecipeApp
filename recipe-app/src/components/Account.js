@@ -3,6 +3,11 @@ import "../styles/account.css";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { db } from "../firebase-config";
+// import Popup from "./Popup";
+// import YouTube from "react-youtube";
+// import YouTubeVideoPopup from "./YouTubeVideoPopup";
+// import getIngridients from "../utilities/getIngridients";
+
 import {
   collection,
   getDocs,
@@ -20,7 +25,9 @@ export default function Account() {
   const [recipes, setRecipes] = useState([]);
   const [meals, setMeals] = useState([]);
   const [active, setActive] = useState(true);
-  // const [recipeName, setRecipeName] = useState("");
+  // const [isMobile, setIsMobile] = useState(false);
+  // const [youtubeVideo, setYoutubeVideo] = useState(false);
+  // const [youtubeLink, setYoutubeLink] = useState("");
   // const [instructionPopup, setInstructionPopup] = useState(false);
   // const [ingredientsPopup, setIngredientsPopup] = useState(false);
   useEffect(() => {
@@ -101,8 +108,69 @@ export default function Account() {
   const handleFavorite = async (meal) => {
     active ? deleteDocument(meal.filteredId) : addRecipeToDb(meal.idMeal);
   };
+  // youTube
+  // let videoOptions = {
+  //   height: "390",
+  //   width: "640",
+  //   playerVars: {
+  //     autoplay: 1,
+  //   },
+  // };
+  // if (isMobile) {
+  //   videoOptions = {
+  //     height: "390",
+  //     width: "350",
+  //     playerVars: {
+  //       autoplay: 1,
+  //     },
+  //   };
+  // }
+
+  // const handleYouTubeVideo = () => {
+  //   setYoutubeVideo(true);
+  //   setYoutubeLink(meals.strYoutube.split("v=")[1].split("&")[0]);
+  // };
   return (
     <>
+      {/* {instructionPopup ? (
+        <Popup
+          title={`Instructions for  ${meals.strMeal.toUpperCase()}`}
+          closeCallback={() => {
+            setInstructionPopup(false);
+          }}
+        >
+          <p>{meals.strInstructions}</p>
+        </Popup>
+      ) : null}
+      
+      {ingredientsPopup ? (
+        <Popup
+          title={`Ingridients for  ${filteredRecipes.strMeal.toUpperCase()}`}
+          closeCallback={() => {
+            setIngredientsPopup(false);
+          }}
+        >
+          <div className="popup-text">
+            {getIngridients(meals).map((ingridient) => {
+              return <p>{ingridient}</p>;
+            })}
+          </div>
+        </Popup>
+      ) : null}
+      
+      {youtubeVideo ? (
+        <YouTubeVideoPopup
+          title={`How to make a  ${meals.strMeal.toUpperCase()}`}
+          closeCallback={() => {
+            setYoutubeVideo(false);
+          }}
+        >
+          <div className="popup-video-popular">
+            <YouTube videoId={youtubeLink} opts={videoOptions} />
+          </div>
+        </YouTubeVideoPopup>
+      ) : null} */}
+
       <Navbar />
       <div className="account-box">
         <div className="account-heading">
@@ -147,8 +215,20 @@ export default function Account() {
                       <p className="favorite-title">{meal.strMeal}</p>
                       <div className="button-holder">
                         <div className="account-buttons">
-                          <button>ingredients</button>
-                          <button>Instruction</button>
+                          <button
+                          // onClick={() => {
+                          //   setInstructionPopup(true);
+                          // }}
+                          >
+                            ingredients
+                          </button>
+                          <button
+                          // onClick={() => {
+                          //   setIngredientsPopup(true);
+                          // }}
+                          >
+                            Instruction
+                          </button>
                           <button>Clip</button>
                         </div>
                       </div>

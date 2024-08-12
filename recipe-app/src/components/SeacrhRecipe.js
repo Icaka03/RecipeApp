@@ -76,6 +76,7 @@ export default function SearchRecipe() {
           onChange={(e) => setSearch(e.target.value)}
           value={search}
           onKeyPress={handleClick}
+          type="text"
         />
         <img
           src={loupe}

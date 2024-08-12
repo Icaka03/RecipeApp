@@ -55,12 +55,14 @@
   margin-top: 10px;
   margin-left: 17px;
 }
-
-.form-button {
+.form-button-recipe-box {
   position: absolute;
   top: 26px;
   right: 25px;
   cursor: pointer;
+  background: #000;
+  border-radius: 50%;
+  padding: 5px;
 }
 
 .recipe-box-icon {
@@ -74,7 +76,7 @@
 
 @media all and (max-width: 700px) {
   .recipe-box {
-    min-height: 36vh;
+    min-height: 38vh;
   }
   .heading {
     text-align: center;

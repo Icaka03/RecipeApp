@@ -8,7 +8,8 @@
   display: block;
   padding: 20px 0px;
   border-radius: 10px;
-  border: 2px solid #71bf3e;
+  border: 5px solid #71bf3e;
+  color: #71bf3e;
 }
 
 .search-recipe-box {
@@ -83,6 +84,17 @@
   margin: 0 auto;
   padding-bottom: 50px;
 }
+
+input::placeholder {
+  color: #71bf3e;
+  font-weight: 600;
+  font-size: 20px;
+}
+input[type="text"] {
+  font-weight: 600;
+  font-size: 20px;
+  padding-left: 20px;
+}
 @media only screen and (min-width: 1500px) {
   .search-text-heading {
     font-size: 35px;
@@ -101,7 +113,7 @@
   .recipe-wrapper {
     display: grid;
     white-space: nowrap;
-    width: 75%;
+    width: 82%;
     margin: 0 auto;
     grid-template-columns: 1fr;
   }

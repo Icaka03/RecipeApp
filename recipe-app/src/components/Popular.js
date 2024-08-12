@@ -15,7 +15,24 @@ export default function Popular() {
   const [youtubeVideo, setYoutubeVideo] = useState(false);
   const [youtubeLink, setYoutubeLink] = useState("");
   const [active, setActive] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
+  const handleResize = () => {
+    if (window.innerWidth < 700) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  };
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    console.log(window.innerWidth);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/random.php
 `)
@@ -46,13 +63,22 @@ export default function Popular() {
   //Add yo firestore database />
 
   // Youtube Video
-  const videoOptions = {
+  let videoOptions = {
     height: "390",
     width: "640",
     playerVars: {
       autoplay: 1,
     },
   };
+  if (isMobile) {
+    videoOptions = {
+      height: "390",
+      width: "350",
+      playerVars: {
+        autoplay: 1,
+      },
+    };
+  }
 
   const handleYouTubeVideo = () => {
     setYoutubeVideo(true);

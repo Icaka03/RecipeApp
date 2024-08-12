@@ -52,7 +52,7 @@ export default function RecipeBox({
         <button onClick={ingridientsSetter}>Ingridients</button>
       </div>
       <form onSubmit={handleSubmit}>
-        <button className="form-button">
+        <button className="form-button-recipe-box">
           <img
             src={active ? favoritePassive : favoriteActive}
             onClick={() => {

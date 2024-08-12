@@ -252,4 +252,20 @@
     top: 0px;
     right: 0px;
   }
+  .popup {
+    width: 90%;
+  }
+  .popup-heading {
+    width: 100%;
+  }
+  .popup-text {
+    width: 90%;
+    text-align: left;
+    font-size: 18px;
+  }
+  .close-popup {
+    padding: 3px 10px;
+    left: 90%;
+    top: -23%;
+  }
 }
