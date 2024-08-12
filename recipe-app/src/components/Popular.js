@@ -138,7 +138,7 @@ export default function Popular() {
               </div>
             </div>
             <form onSubmit={handleSubmit} className="form">
-              <button className="form-button">
+              <button className="form-button-popular">
                 <img
                   src={active ? favoritePassive : favoriteActive}
                   onClick={() => {

@@ -145,9 +145,12 @@ export default function Account() {
                     <div className="favorite-recipe-text">
                       <p className="favorite-category">{meal.strCategory}</p>
                       <p className="favorite-title">{meal.strMeal}</p>
-                      <div>
-                        <button>ingredients</button>
-                        <button>Instruction</button>
+                      <div className="button-holder">
+                        <div className="account-buttons">
+                          <button>ingredients</button>
+                          <button>Instruction</button>
+                          <button>Clip</button>
+                        </div>
                       </div>
                       <img
                         src={active ? favorite : unFavorite}
@@ -167,5 +170,3 @@ export default function Account() {
     </>
   );
 }
-
-// deleteDocument(meal.filteredId)

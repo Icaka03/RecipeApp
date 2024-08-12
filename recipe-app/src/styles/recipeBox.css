@@ -1,5 +1,5 @@
 .recipe-box {
-  background-color: #674b15;
+  background-color: #64804f;
   min-height: 45vh;
   margin-right: 70px;
   border-radius: 15px;
@@ -19,11 +19,11 @@
 }
 
 .recipe-box-buttons button {
-  background-color: #53487b;
+  background-color: #e3f7d3;
   border: none;
   border-radius: 5px;
   padding: 10px 15px;
-  color: #fff;
+  color: #000;
   cursor: pointer;
   font-size: 18px;
 }
@@ -44,6 +44,10 @@
   justify-content: space-around;
   text-wrap: wrap;
   margin-top: 10px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 .recipe-origin {
@@ -65,5 +69,20 @@
 @media only screen and (min-width: 1500px) {
   .recipe-box {
     min-height: 34vh;
+  }
+}
+
+@media all and (max-width: 700px) {
+  .recipe-box {
+    min-height: 36vh;
+  }
+  .heading {
+    text-align: center;
+  }
+  .from-where {
+    text-align: center;
+  }
+  .recipe-origin {
+    text-align: center;
   }
 }

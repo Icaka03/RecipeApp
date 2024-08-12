@@ -96,5 +96,13 @@
 @media all and (max-width: 700px) {
   .input-box {
     margin-top: 160px;
+    padding-bottom: 30px;
+  }
+  .recipe-wrapper {
+    display: grid;
+    white-space: nowrap;
+    width: 75%;
+    margin: 0 auto;
+    grid-template-columns: 1fr;
   }
 }
