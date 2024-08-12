@@ -133,7 +133,7 @@
   font-size: 20px;
   padding: 10px 0px;
 }
-@media only screen and (max-width: 1500px) {
+@media only screen and (max-width: 1600px) {
   .header-section-text h1 {
     font-size: 55px;
   }
