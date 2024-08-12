@@ -10,9 +10,9 @@ export default function Navbar() {
   const isLogged = localStorage.getItem("name");
   const profileImg = localStorage.getItem("profileImg");
   const [isMobile, setIsMobile] = useState(false);
-
+  const [burgerMenuClicked, setBurgerMenuClicked] = useState(false);
   const handleResize = () => {
-    if (window.innerWidth < 566) {
+    if (window.innerWidth < 700) {
       setIsMobile(true);
     } else {
       setIsMobile(false);
@@ -41,8 +41,41 @@ export default function Navbar() {
   };
   return (
     <nav className="nav">
+      {burgerMenuClicked ? (
+        <>
+          <div className="burger-menu-sidebar"></div>
+          <div className="burger-menu-content">
+            <Link to="/" style={{ textDecoration: "none", color: "#fff" }}>
+              <span className="burger-menu-links">Home</span>
+            </Link>
+            <span className="burger-menu-links">Recipes</span>
+            {isLogged ? (
+              <Link
+                to="/account"
+                style={{ textDecoration: "none", color: "#fff" }}
+              >
+                <span className="burger-menu-links">Your Recipes</span>
+              </Link>
+            ) : (
+              <span
+                className="burger-menu-links"
+                onClick={() => alert("You need to be logged in First")}
+              >
+                Your Recipes
+              </span>
+            )}
+          </div>
+        </>
+      ) : null}
       {isMobile ? (
-        <img src={burgerMenu} alt="burger-menu" className="burger-menu-icon" />
+        <img
+          src={burgerMenu}
+          alt="burger-menu"
+          className={
+            burgerMenuClicked ? "burger-menu-icon-active" : "burger-menu-icon"
+          }
+          onClick={() => setBurgerMenuClicked(!burgerMenuClicked)}
+        />
       ) : (
         <>
           <div>

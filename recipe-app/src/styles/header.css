@@ -99,6 +99,40 @@
   width: 30px;
   filter: invert(100%) brightness(100%);
 }
+
+.burger-menu-sidebar {
+  height: 100vh;
+  width: 50%;
+  background-color: #5b8a76;
+  position: absolute;
+  left: 0;
+  position: fixed;
+  z-index: 1;
+}
+
+.burger-menu-icon-active {
+  width: 30px;
+  filter: invert(100%) brightness(100%);
+  position: absolute;
+  left: 47px;
+  top: 22px;
+  position: fixed;
+  z-index: 1;
+}
+
+.burger-menu-content {
+  z-index: 1;
+  position: fixed;
+  left: 47px;
+  top: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.burger-menu-links {
+  font-size: 25px;
+  padding: 10px 0px;
+}
 @media only screen and (max-width: 1500px) {
   .header-section-text h1 {
     font-size: 55px;
